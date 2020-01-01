@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fiainana BDB!{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    <link rel="manifest" href="{{ asset('manifest.json') }}" />
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "0eb6263e-44ed-4d51-8f6d-687cfe027f2c",
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container-scroller">
+    {% include 'admin/menu/_top_nav.html.twig' %}
+    <div class="container-fluid page-body-wrapper">
+        {% include 'admin/menu/_sidebar.html.twig' %}
+        <div class="main-panel">
+            <div class="content-wrapper">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>

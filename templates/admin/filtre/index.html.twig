@@ -1,0 +1,35 @@
+{% extends 'admin/_base_admin.html.twig' %}
+
+{% block title %}Filtre liste{% endblock %}
+
+{% block body %}
+    <h1>Filtre liste</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title">Liste des filtres</h4>
+                <a href="{{ path('filtre_new') }}" class="btn btn-gradient-primary ml-auto">Nouveau</a>
+            </div>
+            <div class="mt-2"></div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Filtre</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for filtre in filtres %}
+                    <tr>
+                        <td>{{ filtre.name }}</td>
+                        <td>
+                            <a href="{{ path('filtre_edit', {'id': filtre.id}) }}"  class="badge badge-success">Modifier</a>
+                            <a href="{{ path('filtre_delete', {'id': filtre.id}) }}" class="badge badge-danger">Suprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

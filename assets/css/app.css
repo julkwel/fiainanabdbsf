@@ -1,0 +1,10 @@
+
+@import "~bootstrap";
+@import "~bootstrap-social";
+@import "~eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css";
+@import "../theme/vendors/mdi/css/materialdesignicons.min.css";
+@import "../theme/vendors/css/vendor.bundle.base.css";
+@import "../theme/css/style.css";
+@import "~datatables.net-bs4";
+@import "~datatables.net-responsive-bs4";
+@import "./custom.css";

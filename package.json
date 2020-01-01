@@ -1,0 +1,31 @@
+{
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.28.2",
+    "core-js": "^3.0.0",
+    "regenerator-runtime": "^0.13.2",
+    "webpack-notifier": "^1.6.0"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^16.0.0",
+    "bootstrap": "^4.4.1",
+    "bootstrap-social": "^5.1.1",
+    "datatables.net-autofill-bs4": "^2.3.4",
+    "datatables.net-bs4": "^1.10.20",
+    "datatables.net-buttons-bs4": "^1.6.1",
+    "datatables.net-responsive-bs4": "^2.2.3",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "jquery": "^3.4.1",
+    "jszip": "^3.2.2",
+    "moment": "^2.24.0",
+    "pdfmake": "^0.1.63",
+    "popper.js": "^1.16.0"
+  }
+}

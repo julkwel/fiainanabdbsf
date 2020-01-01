@@ -1,0 +1,24 @@
+{% extends 'admin/_base_admin.html.twig' %}
+
+{% block body %}
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h4>Gestion Publication</h4>
+                    {{ form_start(form) }}
+                    {{ form_row(form.title) }}
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.avatar) }}
+                    {% if form.avatar.vars.data %}
+                        <img src="{{ asset(form.avatar.vars.data) }}" width="50" height="50" alt="">
+                    {% endif %}
+                    {{ form_row(form.publicationDate) }}
+                    <input type="submit" class="btn btn-gradient-primary mr-2" value="Enregistrer"/>
+                    <a href="{{ path('list_fiainana') }}" class="btn btn-light">Cancel</a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                    <img src="{{ asset('upload/media/download.jpeg') }}" alt="profile">
+                    <span class="login-status online"></span>
+                    <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                    <span class="font-weight-bold mb-2">{{ app.user?app.user.nom : 'Fiainana be dia be' }}</span>
+                    <span class="text-secondary text-small">Fiainana be dia be</span>
+                </div>
+                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('dashboard') }}">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('list_user') }}">
+                <span class="menu-title">Utilisateur</span>
+                <i class="mdi mdi-face menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('list_fiainana') }}">
+                <span class="menu-title">Publication</span>
+                <i class="mdi mdi-book-lock-open menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item {% if menu_members is defined %} active {% endif %}">
+            <a class="nav-link" href="{{ path('list_user',{'slug':'members'}) }}">
+                <span class="menu-title">Membres</span>
+                <i class="mdi mdi-account-multiple-plus menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('filtre_index') }}">
+                <span class="menu-title">Filtre</span>
+                <i class="mdi mdi-view-list menu-icon"></i>
+            </a>
+        </li>
+    </ul>
+</nav>

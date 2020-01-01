@@ -1,0 +1,11 @@
+{% extends 'front/_home_page.html.twig' %}
+{% block content %}
+    <div class="card mt-2">
+        <div class="card-body">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+            <input type="submit" class="btn btn-gradient-primary" value="S'enregistrer">
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

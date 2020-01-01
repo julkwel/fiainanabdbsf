@@ -1,0 +1,36 @@
+{% extends 'admin/_base_admin.html.twig' %}
+{% set menu_members = true %}
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title">Liste utilisateur</h4>
+                <a href="{{ path('manage_members') }}" class="btn btn-gradient-primary ml-auto">Nouveau</a>
+            </div>
+            <div class="mt-2"></div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Nom d'utilisateur</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.nom }}</td>
+                        <td>{{ user.prenom }}</td>
+                        <td>
+                            <a href="{{ path('manage_members',{'id': user.id}) }}" class="badge badge-success">Modifier</a>
+                            <a href="{{ path('delete_user',{'id': user.id}) }}" class="badge badge-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

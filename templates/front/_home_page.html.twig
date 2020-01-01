@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 social-block mt-2">
+                {% if filtres is defined %}
+                <div class="card">
+                    <h4 class="card-title ml-2">Hitady</h4>
+                    <div class="card-body p-2">
+                            {% for filtre in filtres %}
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" value="{{ filtre.name }}" type="checkbox">
+                                        {{ filtre.name }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="card mt-2">
+                    <h4 class="card-title ml-2">Facebook</h4>
+                    <div class="card-body">
+                        <div id="fb-root"></div>
+                        <script async defer crossorigin="anonymous"
+                                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=870844926413174&autoLogAppEvents=1"></script>
+                        <div class="fb-page" data-href="https://www.facebook.com/fiainanabdb/" data-tabs="timeline"
+                             data-width="500" data-height="" data-small-header="false"
+                             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/fiainanabdb/" class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/fiainanabdb/">Fiainanabdb</a></blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col content-block">
+                {% block content %}
+                    {% for fn in fiainana %}
+                        <div class="card mb-3  mt-2">
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="date_holder">
+                                            <span class="day">{{ fn.publicationDate|date('d') }}</span>
+                                            <span class="month">{{ fn.publicationDate|date('M') }}</span>
+                                        </div>
+                                        <h4 class="card-title">{{ fn.title|replace({'zanaku': 'zanako'}) }}</h4>
+                                    </div>
+                                </div>
+                                <div class="mt-5"></div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="{{ fn.avatar }}" style="width: 200px;height: 100px"
+                                             class="mb-2 rounded"
+                                             alt="">
+                                    </div>
+                                    <div class="col-md-8 overflow-hidden" style="height: 150px">
+                                        {{ fn.description|raw|replace({'zanaku': 'zanako'})|raw }}
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-5 align-items-top">
+                                    <img src="{{ fn.avatar }}" class="img-sm rounded-circle mr-3" alt="image">
+                                    <div class="mb-0 flex-grow">
+                                        <h5 class="mr-2 mb-2">Fiainana be dia be.</h5>
+                                        <p class="mb-0 font-weight-light">{{ fn.publicationDate|date('d-m-Y') }}.</p>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <a href="{{ path('message_details', {'id': fn.id}) }}" class="btn btn-danger">Hamaky <i
+                                                    class="mdi mdi-arrow-right-bold-circle"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+            </div>
+            <div class="col-md-4 contact-block mt-2">
+                <div class="card">
+                    <h4 class="card-title ml-2 mt-2">Araho ny pejy</h4>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a class="btn btn-block btn-social btn-facebook text-white">
+                                    <span class="mdi mdi-facebook"></span> Facebook
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="btn btn-block btn-social btn-google text-white">
+                                    <span class="mdi mdi-google"></span> Site Web
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h4 class="card-title">Manorata aminay</h4>
+                        <form action="" method="post" id="fbdb-contact">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email"
+                                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required name="email"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Hafatra</label>
+                                <textarea type="text" id="message" required name="message"
+                                          class="form-control"></textarea>
+                            </div>
+                            <input type="button" class="btn d-block w-100 btn-gradient-primary ml-auto"
+                                   data-url="{{ app.request.getSchemeAndHttpHost ~ path('home_message') }}"
+                                   id="submit-fbdb" value="Envoyer">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

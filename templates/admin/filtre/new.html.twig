@@ -1,0 +1,20 @@
+{% extends 'admin/_base_admin.html.twig' %}
+
+{% block title %}Noueau filtre{% endblock %}
+
+{% block body %}
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <h4>Gestion Filtre</h4>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="btn btn-gradient-primary mr-2" value="Enregistrer"/>
+                <a href="{{ path('filtre_index') }}" class="btn btn-light">back to list</a>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

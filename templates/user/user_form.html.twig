@@ -1,0 +1,20 @@
+{% extends 'admin/_base_admin.html.twig' %}
+
+{% block body %}
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>Gestion Utilisateur</h3>
+
+                    <div class="mt-2"></div>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                        <input type="submit" class="btn btn-gradient-primary mr-2" value="Enregistrer"/>
+                        <a href="{{ path('list_user') }}" class="btn btn-light">Cancel</a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

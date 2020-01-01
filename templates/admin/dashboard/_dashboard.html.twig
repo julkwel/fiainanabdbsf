@@ -1,0 +1,26 @@
+{% extends 'admin/_base_admin.html.twig' %}
+
+{% block body %}
+    <h3 class="page-title">
+        <span class="page-title-icon bg-gradient-primary text-white mr-2">
+          <i class="mdi mdi-home"></i>
+        </span>
+        Dashboard
+    </h3>
+    <div class="mt-2"></div>
+    <div class="row">
+        <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-danger card-img-holder text-white">
+                <div class="card-body">
+                    <h4 class="font-weight-normal mb-3">
+                        Membres
+                        <a href="{{ path('manage_members', {'id': 'x'}) }}" class="text-white">
+                            <i class="mdi mdi-account-plus mdi-24px float-right"></i>
+                        </a>
+                    </h4>
+                    <h2>{{ users }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
