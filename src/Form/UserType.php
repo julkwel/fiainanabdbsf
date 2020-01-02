@@ -52,7 +52,10 @@ class UserType extends AbstractType
                     'widget' => 'single_text',
                     'format' => 'MM/dd/yyyy HH:mm',
                     'attr' => [
-                        'class' => 'datetime-picker'
+                        'class' => 'datetime-picker datetimepicker-input',
+                        'data-toggle' => 'datetimepicker',
+                        'data-target' => '#user_birthDate',
+                        'autocomplete'=>'off'
                     ]
                 ]
             )
@@ -74,8 +77,7 @@ class UserType extends AbstractType
                     'first_options' => ['label' => 'Mots de passe'],
                     'second_options' => ['label' => 'Confirmer votre mots de passe'],
                 ]
-            )
-        ;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

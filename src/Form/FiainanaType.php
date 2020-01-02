@@ -35,7 +35,10 @@ class FiainanaType extends AbstractType
                     'widget' => 'single_text',
                     'format' => 'MM/dd/yyyy HH:mm',
                     'attr' => [
-                        'class' => 'datetime-picker'
+                        'class' => 'datetime-picker datetimepicker-input',
+                        'data-toggle' => 'datetimepicker',
+                        'data-target' => '#fiainana_publicationDate',
+                        'autocomplete'=>'off'
                     ]
                 ]
             )

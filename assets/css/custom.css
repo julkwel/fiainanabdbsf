@@ -1,6 +1,6 @@
 .date_holder {
     float: left;
-    background: #0088ff;
+    background: linear-gradient(to right, #da8cff, #9a55ff);
     color: #fff;
     padding: 4px 12px 12px;
     margin-right: 6px;
@@ -27,7 +27,7 @@
     font-weight: 700;
 }
 
-body{
+body {
     background: #f2edf3;
 }
 
@@ -38,7 +38,7 @@ body{
     font-weight: 700;
 }
 
-.btn-social>:first-child {
+.btn-social > :first-child {
     position: absolute;
     left: 0;
     top: 0;
@@ -47,12 +47,21 @@ body{
     line-height: 42px;
     font-size: 1.6em;
     text-align: center;
-    border-right: 1px solid rgba(0,0,0,0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (max-width: 640px)  {
-    .content-block{
-        width: 100%!important;
-        display: block;
-    }
+.btn-google {
+    background: #fe7c96;
+}
+
+.btn-google:hover {
+    background: #fe7c96;
+}
+
+.btn-facebook {
+    background: linear-gradient(to right, #da8cff, #9a55ff);
+}
+
+.btn-facebook:hover {
+    background: linear-gradient(to right, #da8cff, #9a55ff);
 }

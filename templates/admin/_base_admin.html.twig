@@ -2,20 +2,23 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Fiainana BDB!{% endblock %}</title>
+    <meta name="keyword" content="Fiainanabdb, Fiainana , bdb , teny , mana , baiboly, hafatra">
+    <link rel="shortcut icon" href="{{ asset('upload/media/ic_launcher.png') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
-    <link rel="manifest" href="{{ asset('manifest.json') }}" />
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        var OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "0eb6263e-44ed-4d51-8f6d-687cfe027f2c",
-            });
-        });
-    </script>
+{#    <link rel="manifest" href="{{ asset('manifest.json') }}" />#}
+{#    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>#}
+{#    <script>#}
+{#        var OneSignal = window.OneSignal || [];#}
+{#        OneSignal.push(function() {#}
+{#            OneSignal.init({#}
+{#                appId: "0eb6263e-44ed-4d51-8f6d-687cfe027f2c",#}
+{#            });#}
+{#        });#}
+{#    </script>#}
 </head>
 <body>
 <div class="container-scroller">

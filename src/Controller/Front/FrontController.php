@@ -11,6 +11,7 @@ use App\Entity\Fiainana;
 use App\Entity\Filtre;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\FiainanaRepository;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -33,9 +34,27 @@ class FrontController extends AbstractBaseController
     public function home()
     {
         $filtres = $this->manager->getRepository(Filtre::class)->findAll();
-        $fiainana = $this->manager->getRepository(Fiainana::class)->findAll();
+        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy([], ['id' => 'DESC'],10);
 
         return $this->render('front/_home_page.html.twig', ['fiainana' => $fiainana, 'filtres' => $filtres,]);
+    }
+
+    /**
+     * @param Request            $request
+     * @param FiainanaRepository $repository
+     *
+     * @return Response
+     *
+     * @Route("/ajax/filter",name="ajax_filter")
+     *
+     */
+    public function filter(Request $request, FiainanaRepository $repository)
+    {
+        $search = $request->query->get('search');
+
+        $fiainana = $repository->findByAjax($search);
+
+        return $this->render('front/_template_data.html.twig', ['fiainana' => $fiainana]);
     }
 
     /**

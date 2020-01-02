@@ -1,22 +1,31 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 social-block mt-2">
+            <div class="col-md-2 order-2 order-md-13 social-block mt-2">
                 {% if filtres is defined %}
-                <div class="card">
-                    <h4 class="card-title ml-2">Hitady</h4>
-                    <div class="card-body p-2">
+                    <div class="card">
+                        <h4 class="card-title ml-2">Hitady</h4>
+                        <div class="card-body p-2">
                             {% for filtre in filtres %}
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="checkbox" value="{{ filtre.name }}" type="checkbox">
+                                        <input class="checkbox filtre-fiainana" name="filtre"
+                                               data-url="{{ path('ajax_filter') }}" value="{{ filtre.name }}"
+                                               type="radio">
                                         {{ filtre.name }}
                                     </label>
                                 </div>
                             {% endfor %}
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="checkbox" name="filtre" onclick="location.reload()" type="checkbox">
+                                    Izy rehetra
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                </div>
                 {% endif %}
                 <div class="card mt-2">
                     <h4 class="card-title ml-2">Facebook</h4>
@@ -33,60 +42,76 @@
                     </div>
                 </div>
             </div>
-            <div class="col content-block">
-                {% block content %}
-                    {% for fn in fiainana %}
-                        <div class="card mb-3  mt-2">
-                            <div class="card-body p-3">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="date_holder">
-                                            <span class="day">{{ fn.publicationDate|date('d') }}</span>
-                                            <span class="month">{{ fn.publicationDate|date('M') }}</span>
+            <div class="col-md-6 order-md-6 content-block">
+                {% if fiainana is defined %}
+                    <div class="mt-2">
+                        <div class="card h-50">
+                            <div class="card-body">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-lg-5 mb-5 mb-lg-0">
+                                        <h1 class="text-dark font-weight-light">Teny manokana ho anao isan’andro</h1>
+                                        <p class="lead text-dark mt-4">Mizara hafatra hoanao amin'ny fotoana rehetra , teny
+                                            fampaherezana
+                                            notsongaina avy ao amin'ny baiboly .</p>
+                                        <a href="{{ path('inscription_members') }}" class="btn btn-gradient-primary mt-4 ">Misorata
+                                            anarana</a>
+                                    </div>
+                                    <div class="col-lg-6 mb-lg-auto">
+                                        <div class="rounded shadow-lg overflow-hidden transform-perspective-right">
+                                            <div id="carousel_example" class="carousel slide" data-ride="carousel"
+                                                 tabindex="-1">
+                                                <ol class="carousel-indicators">
+                                                    <li data-target="#carousel_example" data-slide-to="0" class=""></li>
+                                                    <li data-target="#carousel_example" data-slide-to="1" class=""></li>
+                                                </ol>
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active" style="width: 500px;height: 250px">
+                                                        <img class="img-fluid" width="500" height="250"
+                                                             src="{{ fiainana ? fiainana[0].avatar : './uploads/photos/54462673_342642586355281_3107065967121793024_n-5e0cdc1500764.jpeg' }}"
+                                                             alt="Hafatra hoanao">
+                                                    </div>
+                                                    {% for avatar in fiainana %}
+                                                        <div class="carousel-item" style="width: 500px;height: 250px">
+                                                            <img class="img-fluid" width="500" height="250"
+                                                                 src="{{ avatar.avatar }}" alt="Hafatra hoanao">
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carousel_example" role="button"
+                                                   data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carousel_example" role="button"
+                                                   data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <h4 class="card-title">{{ fn.title|replace({'zanaku': 'zanako'}) }}</h4>
-                                    </div>
-                                </div>
-                                <div class="mt-5"></div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="{{ fn.avatar }}" style="width: 200px;height: 100px"
-                                             class="mb-2 rounded"
-                                             alt="">
-                                    </div>
-                                    <div class="col-md-8 overflow-hidden" style="height: 150px">
-                                        {{ fn.description|raw|replace({'zanaku': 'zanako'})|raw }}
-                                    </div>
-                                </div>
-                                <div class="d-flex mt-5 align-items-top">
-                                    <img src="{{ fn.avatar }}" class="img-sm rounded-circle mr-3" alt="image">
-                                    <div class="mb-0 flex-grow">
-                                        <h5 class="mr-2 mb-2">Fiainana be dia be.</h5>
-                                        <p class="mb-0 font-weight-light">{{ fn.publicationDate|date('d-m-Y') }}.</p>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <a href="{{ path('message_details', {'id': fn.id}) }}" class="btn btn-danger">Hamaky <i
-                                                    class="mdi mdi-arrow-right-bold-circle"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
+                {% endif %}
+                {% block content %}
+                    {% include 'front/_template_data.html.twig' %}
                 {% endblock %}
             </div>
-            <div class="col-md-4 contact-block mt-2">
+            <div class="col-md-4 order-md-6 contact-block mt-2">
                 <div class="card">
                     <h4 class="card-title ml-2 mt-2">Araho ny pejy</h4>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <a class="btn btn-block btn-social btn-facebook text-white">
+                                <a href="https://www.facebook.com/fiainanabdb/" target="_blank" class="btn btn-block btn-social btn-facebook text-white">
                                     <span class="mdi mdi-facebook"></span> Facebook
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a class="btn btn-block btn-social btn-google text-white">
-                                    <span class="mdi mdi-google"></span> Site Web
+                                <a href="{{ path('home_page') }}" class="btn btn-block btn-social btn-google text-white">
+                                    <span class="mdi mdi-google"></span> Misorata anarana
                                 </a>
                             </div>
                         </div>

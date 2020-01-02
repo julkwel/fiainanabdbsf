@@ -1,6 +1,7 @@
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 $(document).ready(function () {
+
     $('.datetime-picker').datetimepicker();
 
     $(document).on('change', '.custom-file-input', function (event) {
@@ -26,10 +27,10 @@ $(document).ready(function () {
                     message: $('#fbdb-contact').serializeArray()
                 },
                 method: 'POST',
-                success:function () {
+                success: function () {
                     alert('Misaotra amin\'ny hafatra nalefanao')
                 },
-                err:function (err) {
+                err: function (err) {
                     alert('Misy olana ny fifandraisana amin\'izao fotoana izao');
                     console.log(err)
                 }
@@ -37,5 +38,22 @@ $(document).ready(function () {
         )
     });
 
+    $('.filtre-fiainana').on('click', function () {
+        var search = $(this).val();
+        var url = $(this).data('url');
+        $.ajax(url,
+            {
+                data: {
+                    search: search,
+                },
+                success: function (data) {
+                    $('.content-block').html(data)
+                },
+                err: function (err) {
+                    console.log(err)
+                }
+            }
+        );
+    });
     $('.table').DataTable();
 });

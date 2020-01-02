@@ -1,16 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-danger text-white">
-    <a class="navbar-brand text-white text-bold" href="{{ path('home_page') }}">FIAINANA BE DIA BE</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarNav">
-        <ul class="navbar-nav ml-md-auto">
-            <li class="nav-item active">
-                <a class="nav-link text-white" href="{{ path('inscription_members') }}">Hisoratra anarana <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="{{ path('app_login') }}">Login</a>
-            </li>
-        </ul>
+    <div class="container">
+        <a class="navbar-brand text-white" style="font-weight: bold" href="{{ path('home_page') }}">FIAINANA BE DIA BE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white"  style="font-weight: bold" href="{{ path('inscription_members') }}">Hisoratra anarana <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" style="font-weight: bold" href="{{ path('app_login') }}">Hiditra</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
