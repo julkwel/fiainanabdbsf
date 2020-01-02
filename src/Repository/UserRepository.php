@@ -19,9 +19,9 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-     /**
-      * @return User[] Returns an array of User objects
-      */
+    /**
+     * @return User[] Returns an array of User objects
+     */
     public function findAdmin()
     {
         return $this->createQueryBuilder('u')
@@ -29,8 +29,7 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('val', '%ROLE_ADMIN%')
             ->orderBy('u.id', 'ASC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     /**
@@ -40,10 +39,11 @@ class UserRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('u')
             ->where('u.roles LIKE :val')
+            ->andWhere('u.isAbone = :isAbone')
             ->setParameter('val', '%ROLE_USER%')
+            ->setParameter('isAbone', true)
             ->orderBy('u.id', 'ASC')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 }
