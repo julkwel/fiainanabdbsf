@@ -6,6 +6,7 @@
 parameters:
     publication_photo: '%kernel.project_dir%/public/uploads/photos'
     email_fiainana: 'fiainanabediabe@gmail.com'
+    pass_fiainana: 'fi@in@n@'
 services:
     # default configuration for services in *this* file
     _defaults:

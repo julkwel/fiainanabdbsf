@@ -12,6 +12,7 @@ use App\Repository\FiainanaRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class DashboardController.
