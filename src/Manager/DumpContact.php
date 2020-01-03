@@ -13,7 +13,6 @@ class DumpContact
     public function getContact(ContainerInterface $parameterBag)
     {
         $path = $parameterBag->getParameter('kernel.project_dir').'/public/upload/contact.yaml';
-        $pathMessage = $parameterBag->getParameter('kernel.project_dir').'/public/upload/message.yaml';
 
         if (function_exists('imap_open')) {
             $hostname = '{imap.gmail.com:993/imap/ssl}[Gmail]/Messages envoy&AOk-s';
