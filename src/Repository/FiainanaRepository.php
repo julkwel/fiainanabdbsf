@@ -6,8 +6,10 @@
 namespace App\Repository;
 
 use App\Entity\Fiainana;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Exception;
 
 /**
  * @method Fiainana|null find($id, $lockMode = null, $lockVersion = null)
@@ -33,5 +35,24 @@ class FiainanaRepository extends ServiceEntityRepository
             ->where('u.description LIKE :s')
             ->setParameter('s','%'.$search.'%')
             ->getQuery()->getResult();
+    }
+
+    /**
+     * @return Fiainana[] Returns an array of Teny objects
+     *
+     * @throws Exception
+     */
+    public function findByDate()
+    {
+        $now = new DateTime('now');
+
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.publicationDate < :val')
+            ->setParameter('val', $now)
+            ->orderBy('t.id', 'DESC')
+            ->setMaxResults(50)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 }
