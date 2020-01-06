@@ -29,7 +29,8 @@ class UserType extends AbstractType
                 [
                     'label' => 'Nom',
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-control',
+                        'placeholder' => 'Nom',
                     ]
                 ]
             )
@@ -39,7 +40,8 @@ class UserType extends AbstractType
                 [
                     'label' => 'prenom',
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-control',
+                        'placeholder' => 'Prénom',
                     ]
                 ]
             )
@@ -55,7 +57,8 @@ class UserType extends AbstractType
                         'class' => 'datetime-picker datetimepicker-input',
                         'data-toggle' => 'datetimepicker',
                         'data-target' => '#user_birthDate',
-                        'autocomplete'=>'off'
+                        'autocomplete' => 'off',
+                        'placeholder' => 'Date de naissance',
                     ]
                 ]
             )
@@ -65,7 +68,8 @@ class UserType extends AbstractType
                 [
                     'label' => 'Email',
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-control',
+                        'placeholder' => 'Email',
                     ]
                 ]
             )

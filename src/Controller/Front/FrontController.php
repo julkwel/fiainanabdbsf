@@ -98,7 +98,7 @@ class FrontController extends AbstractBaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
+            $user->setPassword($this->encoder->encodePassword($user, '123456'));
             $user->setRoles([RoleConstant::ROLES['User']]);
 
             return $this->redirectToRoute('home_page');

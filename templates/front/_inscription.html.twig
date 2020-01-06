@@ -3,7 +3,11 @@
     <div class="card mt-2">
         <div class="card-body">
             {{ form_start(form) }}
-                {{ form_widget(form) }}
+                {{ form_row(form.nom) }}
+                {{ form_row(form.prenom) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.birthDate) }}
+            {% do form.password.setRendered %}
             <input type="submit" class="btn btn-gradient-primary" value="S'enregistrer">
             {{ form_end(form) }}
         </div>
