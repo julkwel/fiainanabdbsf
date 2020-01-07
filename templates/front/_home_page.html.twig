@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 order-2 order-md-13 social-block mt-2">
+            <div class="col-md-3 order-2 order-md-13 social-block mt-2">
                 {% if filtres is defined %}
                     <div class="card">
                         <h4 class="card-title ml-2">Hitady</h4>
@@ -99,19 +99,19 @@
                     {% include 'front/_template_data.html.twig' %}
                 {% endblock %}
             </div>
-            <div class="col-md-4 order-md-6 contact-block mt-2">
+            <div class="col-md-3 order-md-6 contact-block mt-2">
                 <div class="card">
                     <h4 class="card-title ml-2 mt-2">Araho ny pejy</h4>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="https://www.facebook.com/fiainanabdb/" target="_blank" class="btn btn-block btn-social btn-facebook text-white">
-                                    <span class="mdi mdi-facebook"></span> Facebook
+                                <a href="https://www.facebook.com/fiainanabdb/" target="_blank" class="btn btn-block  btn-social-icon btn-social btn-facebook text-white">
+                                    <span class="mdi mdi-facebook"></span>
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ path('home_page') }}" class="btn btn-block btn-social btn-google text-white">
-                                    <span class="mdi mdi-google"></span> Misorata anarana
+                                <a href="{{ path('home_page') }}" class="btn btn-block btn-social-icon btn-social btn-google text-white">
+                                    <span class="mdi mdi-google"></span>
                                 </a>
                             </div>
                         </div>
