@@ -12,7 +12,6 @@ use App\Entity\Filtre;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\FiainanaRepository;
-use App\Repository\TenyRepository;
 use Exception;
 use Swift_Mailer;
 use Swift_Message;
