@@ -65,3 +65,7 @@ body {
 .btn-facebook:hover {
     background: linear-gradient(to right, #da8cff, #9a55ff);
 }
+
+.card .card-title {
+    text-transform: initial!important;
+}
