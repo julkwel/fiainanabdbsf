@@ -72,12 +72,12 @@ class UserController extends AbstractBaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $pass = $this->encoder->encodePassword($user, $user->getPassword());
-            $respRoute = $this->redirectToRoute('list_user');
-
-            $user->setRoles([RoleConstant::ROLES['Admin']]);
             if ($this->getIsMembers($request)) {
                 $user->setRoles([RoleConstant::ROLES['User']]);
                 $respRoute = $this->redirectToRoute('list_user', ['slug' => 'members']);
+            } else {
+                $user->setRoles([RoleConstant::ROLES['Admin']]);
+                $respRoute = $this->redirectToRoute('list_user');
             }
             $user->setPassword($pass);
 
