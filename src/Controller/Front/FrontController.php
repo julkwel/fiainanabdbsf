@@ -63,12 +63,12 @@ class FrontController extends AbstractBaseController
 
         $_teny_api = [];
         foreach ($_teny_list as $key => $value) {
-            $_teny_api[ $key ]['id'] = $value->getId();
-            $_teny_api[ $key ]['description'] = preg_replace("/\s|&nbsp;/", ' ', strip_tags($value->getDescription()));
-            $_teny_api[ $key ]['title'] = $value->getTitle();
-            $_teny_api[ $key ]['image'] = $value->getAvatar();
-            $_teny_api[ $key ]['dateajout'] = date_format($value->getDateAdd(), 'd-m-Y');
-            $_teny_api[ $key ]['datepublication'] = date_format($value->getPublicationDate(), 'd-m-Y');
+            $_teny_api[$key]['id'] = $value->getId();
+            $_teny_api[$key]['description'] = preg_replace("/\s|&nbsp;/", ' ', strip_tags($value->getDescription()));
+            $_teny_api[$key]['title'] = $value->getTitle();
+            $_teny_api[$key]['image'] = $value->getAvatar();
+            $_teny_api[$key]['dateajout'] = date_format($value->getDateAdd(), 'd-m-Y');
+            $_teny_api[$key]['datepublication'] = date_format($value->getPublicationDate(), 'd-m-Y');
         }
 
         $_boo_user_list = $serializer->serialize($_teny_api, 'json');
@@ -84,7 +84,7 @@ class FrontController extends AbstractBaseController
     public function home()
     {
         $filtres = $this->manager->getRepository(Filtre::class)->findAll();
-        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy([], ['id' => 'DESC'],10);
+        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy(['isPublie' => true], ['id' => 'DESC'], 10);
 
         return $this->render('front/_home_page.html.twig', ['fiainana' => $fiainana, 'filtres' => $filtres,]);
     }

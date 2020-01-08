@@ -33,7 +33,7 @@ class FiainanaRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('u')
             ->where('u.description LIKE :s')
-            ->setParameter('s','%'.$search.'%')
+            ->setParameter('s', '%'.$search.'%')
             ->getQuery()->getResult();
     }
 
@@ -44,15 +44,13 @@ class FiainanaRepository extends ServiceEntityRepository
      */
     public function findByDate()
     {
-        $now = new DateTime('now');
-
         return $this->createQueryBuilder('t')
             ->andWhere('t.publicationDate < :val')
-            ->setParameter('val', $now)
+            ->andWhere('t.isPublie = :pub')
+            ->setParameter('val', new DateTime('now'))
             ->orderBy('t.id', 'DESC')
             ->setMaxResults(50)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 }
