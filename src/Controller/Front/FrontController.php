@@ -164,10 +164,11 @@ class FrontController extends AbstractBaseController
      *
      * @return Response
      */
-    public function details(Fiainana $fiainana)
+    public function details(Fiainana $fn)
     {
+        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy(['isPublie' => true], ['id' => 'DESC'], 10);
         $filtres = $this->manager->getRepository(Filtre::class)->findAll();
 
-        return $this->render('front/_teny_details.html.twig', ['fiainana' => $fiainana, 'filtres' => $filtres]);
+        return $this->render('front/_teny_details.html.twig', ['fn' => $fn,'fiainana'=>$fiainana,'filtres' => $filtres]);
     }
 }

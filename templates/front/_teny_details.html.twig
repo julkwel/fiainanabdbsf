@@ -6,20 +6,20 @@
                 <div class="row">
                     <div class="col">
                         <div class="date_holder">
-                            <span class="day">{{ fiainana.publicationDate|date('d') }}</span>
-                            <span class="month">{{ fiainana.publicationDate|date('M') }}</span>
+                            <span class="day">{{ fn.publicationDate|date('d') }}</span>
+                            <span class="month">{{ fn.publicationDate|date('M') }}</span>
                         </div>
-                        <h4 class="card-title text-center">{{ fiainana.title|replace({'zanaku': 'zanako'}) }}</h4>
+                        <h4 class="card-title text-center">{{ fn.title|replace({'zanaku': 'zanako'}) }}</h4>
                     </div>
                 </div>
                 <div class="mt-5"></div>
-                <img src="{{ fiainana.avatar }}" style="width: 100%" alt="">
+                <img src="{{ fn.avatar }}" style="width: 100%" alt="">
                 <div class="mb-2"></div>
-                {{ fiainana.description|replace({'zanaku': 'zanako'})|raw }}
+                {{ fn.description|replace({'zanaku': 'zanako'})|raw }}
                 <div class="d-flex mt-5 align-items-top">
                     <div class="mb-0 flex-grow">
-                        <h5 class="mr-2 mb-2">Fiainana be dia be.</h5>
-                        <p class="mb-0 font-weight-light">{{ fiainana.publicationDate|date('d-m-Y') }}.</p>
+                        <h5 class="mr-2 mb-2">fn be dia be.</h5>
+                        <p class="mb-0 font-weight-light">{{ fn.publicationDate|date('d-m-Y') }}.</p>
                     </div>
                     <div class="ml-auto">
                         <script>(function(d, s, id) {
@@ -30,7 +30,7 @@
                                 fjs.parentNode.insertBefore(js, fjs);
                             }(document, 'script', 'facebook-jssdk'));</script>
                         <div class="fb-share-button"
-                             data-href="{{ app.request.getSchemeAndHttpHost~path('message_details',{'id':fiainana.id}) }}"
+                             data-href="{{ app.request.getSchemeAndHttpHost~path('message_details',{'id':fn.id}) }}"
                              data-layout="button_count">
                         </div>
                     </div>

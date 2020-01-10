@@ -42,7 +42,7 @@ class FiainanaController extends AbstractBaseController
      *
      * @throws Exception
      */
-    public function listFiainana(Request $request,MessageBusInterface $messageBus)
+    public function listFiainana(Request $request, MessageBusInterface $messageBus)
     {
         $fiainana = $this->manager->getRepository(Fiainana::class)->findAll();
         $dateNow = new DateTime('now');
@@ -56,7 +56,7 @@ class FiainanaController extends AbstractBaseController
                 try {
                     $this->getOneSignal()->notifications->add([
                         'contents' => [
-                            'en' => $message->getTitle(),
+                            'en' => str_replace('zanaku', 'zanako', $message->getTitle()),
                         ],
                         'included_segments' => ['All'],
                         'send_after' => $message->getPublicationDate(),

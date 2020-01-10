@@ -16,15 +16,6 @@
     + Color Functions Mixins
     + Tooltips
     + popovers
-  * Core Styles
-    + Reset Styles
-    + Fonts
-    + Functions
-    + Backgrounds
-    + Typography
-    + Miscellaneous
-    + Footer
-    + Layouts
     + Utilities
     + Demo styles
   * Components
@@ -32,7 +23,7 @@
     + Boostrap Progress
     + Buttons
     + Breadcrumbs
-    + Cards
+    + Cards------
     + Checkboxes and Radios
     + Dropdowns
     + Forms
@@ -45,12 +36,21 @@
 -------------------------------------------------------------------*/
 /*-------------------------------------------------------------------*/
 /* === Import Bootstrap functions and variables === */
-/*-------------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
 
-@-webkit-keyframes flash {
+@-webkit-ke
+  * Core Styles
+    + Reset Styles
+    + Fonts
+    + Functions
+    + Backgrounds
+    + Typography
+    + Miscellaneous
+    + Footer
+    + Layoutsyframes flash {
   0% {
     opacity: 1; }
   25% {
