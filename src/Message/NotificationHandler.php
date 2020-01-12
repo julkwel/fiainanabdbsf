@@ -14,7 +14,9 @@ use Swift_Mailer;
 use Swift_Message;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
+
 /**
  * Class NotificationHandler.
  */
@@ -26,23 +28,25 @@ class NotificationHandler implements MessageHandlerInterface
     private $mailer;
     private $parameter;
     private $logger;
+    private $router;
 
     /**
      * NotificationHandler constructor.
      *
-     * @param UserRepository         $userRepository
-     * @param Environment            $environment
-     * @param Swift_Mailer           $mailer
-     * @param EntityManagerInterface $manager
-     * @param ParameterBagInterface  $parameterBag
+     * @param UserRepository        $userRepository
+     * @param Environment           $environment
+     * @param Swift_Mailer          $mailer
+     * @param ParameterBagInterface $parameterBag
+     * @param LoggerInterface       $logger
      */
-    public function __construct(UserRepository $userRepository, Environment $environment, Swift_Mailer $mailer, ParameterBagInterface $parameterBag, LoggerInterface $logger)
+    public function __construct(UserRepository $userRepository, Environment $environment, Swift_Mailer $mailer, ParameterBagInterface $parameterBag, LoggerInterface $logger, RouterInterface $router)
     {
         $this->userRepos = $userRepository;
         $this->twig = $environment;
         $this->mailer = $mailer;
         $this->parameter = $parameterBag;
         $this->logger = $logger;
+        $this->router = $router;
     }
 
     /**
@@ -68,10 +72,10 @@ class NotificationHandler implements MessageHandlerInterface
                 $template = $this->twig->render(
                     'admin/email/_email_template.html.twig',
                     [
-                        'title' => str_replace('zanaku', $member->getNom(), $message->getTitle()),
-                        'message' => str_replace('zanaku', $member->getNom(), $desc),
+                        'title' => str_replace('zanaku', $member->getPrenom(), $message->getTitle()),
+                        'message' => str_replace('zanaku', $member->getPrenom(), $desc),
                         'image' => $message->getAvatar(),
-                        'urldes' => 'www.fiainanabediabe.org',
+                        'urldes' => 'https://www.fiainanabediabe.org/'.$this->router->generate('desabone', ['id' => $member->getId()]),
                         'member' => $member,
                     ]
                 );
