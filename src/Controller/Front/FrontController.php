@@ -16,6 +16,7 @@ use Exception;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -160,7 +161,7 @@ class FrontController extends AbstractBaseController
     /**
      * @Route("/message/details/{id}",name="message_details")
      *
-     * @param Fiainana $fiainana
+     * @param Fiainana $fn
      *
      * @return Response
      */
@@ -170,5 +171,23 @@ class FrontController extends AbstractBaseController
         $filtres = $this->manager->getRepository(Filtre::class)->findAll();
 
         return $this->render('front/_teny_details.html.twig', ['fn' => $fn,'fiainana'=>$fiainana,'filtres' => $filtres]);
+    }
+
+    /**
+     * @Route("/desabone/{id}",name="desabone")
+     *
+     * @param User $user
+     *
+     * @return RedirectResponse
+     */
+    public function desabone(User $user)
+    {
+        /** @var User $thisUser */
+        $thisUser = $this->manager->getRepository(User::class)->find($user);
+
+        $thisUser->setIsAbone(false);
+        $this->manager->flush();
+
+        return $this->redirectToRoute('home_page');
     }
 }

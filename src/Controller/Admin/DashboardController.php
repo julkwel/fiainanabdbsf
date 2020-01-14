@@ -7,7 +7,6 @@ namespace App\Controller\Admin;
 
 use App\Constant\RoleConstant;
 use App\Controller\AbstractBaseController;
-use App\Entity\Fiainana;
 use App\Entity\User;
 use App\Repository\FiainanaRepository;
 use App\Repository\UserRepository;
@@ -46,6 +45,7 @@ class DashboardController extends AbstractBaseController
      */
     public function dashboard(UserRepository $userRepository, FiainanaRepository $fiainanaRepository)
     {
+<<<<<<< HEAD
         $path = $this->parameter->get('kernel.project_dir').'/public/upload/message.yaml';
 
         if (function_exists('imap_open')) {
@@ -87,6 +87,8 @@ class DashboardController extends AbstractBaseController
 
             imap_close($inbox);
         }
+=======
+>>>>>>> 854107370e7d4878b82caed52b73530dd23afb6e
         $users = $userRepository->findMembers();
         $fiainana = $fiainanaRepository->findAll();
 
