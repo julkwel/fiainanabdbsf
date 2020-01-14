@@ -26,12 +26,16 @@ use Symfony\Component\Yaml\Yaml;
  */
 class DashboardController extends AbstractBaseController
 {
-    private $parameter;
-
+    /**
+     * DashboardController constructor.
+     *
+     * @param \Doctrine\ORM\EntityManagerInterface                                      $manager
+     * @param \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface     $passwordEncoder
+     * @param \Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface $parameterBag
+     */
     public function __construct(EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder, ParameterBagInterface $parameterBag)
     {
         parent::__construct($manager, $passwordEncoder);
-        $this->parameter = $parameterBag;
     }
 
     /**
@@ -43,52 +47,8 @@ class DashboardController extends AbstractBaseController
      * @return Response
      * @throws \Exception
      */
-    public function dashboard(UserRepository $userRepository, FiainanaRepository $fiainanaRepository)
+    public function dashboard(UserRepository $userRepository, FiainanaRepository $fiainanaRepository): Response
     {
-<<<<<<< HEAD
-        $path = $this->parameter->get('kernel.project_dir').'/public/upload/message.yaml';
-
-        if (function_exists('imap_open')) {
-            $hostname = '{imap.gmail.com:993/imap/ssl}[Gmail]/Messages envoy&AOk-s';
-            $email = $this->parameter->get('email_fiainana');
-            $pass = $this->parameter->get('pass_fiainana');
-
-            $inbox = imap_open($hostname, $email, $pass) or die('Cannot connect to Gmail: '.imap_last_error());
-            $emails = imap_search($inbox, 'ALL');
-
-            $mess = [];
-            $prenom = [];
-
-            /* if emails are returned, cycle through each... */
-            if ($emails) {
-                /* put the newest emails on top */
-                rsort($emails);
-
-                foreach ($emails as $i => $email_number) {
-                    $overview = imap_fetch_overview($inbox, $email_number, 0);
-                    $bodyText = imap_fetchbody($inbox, $email_number, 1.2);
-                    if (($bodyText === '') > 0) {
-                        $bodyText = imap_fetchbody($inbox, $email_number, 1);
-                    }
-
-                    $dom = new Crawler($bodyText);
-
-                    foreach ($dom->filter('p') as $z => $p) {
-                        $mess[$z] = $p->nodeValue;
-                    }
-                    if (isset($mess[2])){
-                        $prenom[$overview[0]->to][$mess[2]] = preg_replace('/\s+/','',$mess[2]);
-                    }
-                }
-            }
-
-            $yaml = Yaml::dump($prenom);
-            file_put_contents($path, $yaml);
-
-            imap_close($inbox);
-        }
-=======
->>>>>>> 854107370e7d4878b82caed52b73530dd23afb6e
         $users = $userRepository->findMembers();
         $fiainana = $fiainanaRepository->findAll();
 
