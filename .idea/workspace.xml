@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50fd3c35-b038-4650-9a7b-04a50e8af802" name="Default Changelist" comment="get all members">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
-    </list>
+    <list default="true" id="50fd3c35-b038-4650-9a7b-04a50e8af802" name="Default Changelist" comment="get all members" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +45,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -273,7 +268,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -326,6 +320,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -394,6 +389,7 @@
       <workItem from="1578501596119" duration="6536000" />
       <workItem from="1578564323882" duration="1632000" />
       <workItem from="1578656085611" duration="7189000" />
+      <workItem from="1578892517405" duration="1386000" />
     </task>
     <task id="LOCAL-00001" summary="get all members">
       <created>1578041098769</created>
@@ -441,7 +437,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168646000" />
+    <option name="totallyTimeSpent" value="170032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="25" width="1291" height="743" extended-state="6" />
