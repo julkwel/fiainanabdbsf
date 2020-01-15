@@ -33,7 +33,12 @@
                         <div id="fb-root"></div>
                         <script async defer crossorigin="anonymous"
                                 src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=870844926413174&autoLogAppEvents=1"></script>
-                        <div class="fb-page" data-href="https://www.facebook.com/fiainanabdb/" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fiainanabdb/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fiainanabdb/">Fiainanabdb</a></blockquote></div>
+                        <div class="fb-page" data-href="https://www.facebook.com/fiainanabdb/" data-tabs="timeline"
+                             data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
+                             data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/fiainanabdb/" class="fb-xfbml-parse-ignore"><a
+                                        href="https://www.facebook.com/fiainanabdb/">Fiainanabdb</a></blockquote>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,49 +47,47 @@
                     <div class="mt-2">
                         <div class="card h-50">
                             <div class="card-body">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-lg-5 mb-5 mb-lg-0">
-                                        <h1 class="text-dark font-weight-light">Teny manokana ho anao isan’andro</h1>
-                                        <p class="lead text-dark mt-4">Mizara hafatra hoanao isan'andro , tosika
-                                            fampaherezana
-                                            notsongaina avy ao amin'ny baiboly .</p>
-                                        <a href="{{ path('inscription_members') }}" class="btn btn-gradient-primary mt-4 ">Misorata
-                                            anarana</a>
-                                    </div>
-                                    <div class="col-lg-6 mb-lg-auto">
-                                        <div class="rounded shadow-lg overflow-hidden transform-perspective-right">
-                                            <div id="carousel_example" class="carousel slide" data-ride="carousel"
-                                                 tabindex="-1">
-                                                <ol class="carousel-indicators">
-                                                    <li data-target="#carousel_example" data-slide-to="0" class=""></li>
-                                                    <li data-target="#carousel_example" data-slide-to="1" class=""></li>
-                                                </ol>
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active" style="width: 500px;height: 250px">
-                                                        <img class="img-fluid" width="500" height="250"
-                                                             src="{{ fiainana ? fiainana[0].avatar : './uploads/photos/3688833-5e0cd5eded8f6.jpeg' }}"
-                                                             alt="Hafatra hoanao">
-                                                    </div>
-                                                    {% for avatar in fiainana %}
-                                                        <div class="carousel-item" style="width: 500px;height: 250px">
-                                                            <img class="img-fluid" width="500" height="250"
-                                                                 src="{{ avatar.avatar }}" alt="Hafatra hoanao">
-                                                        </div>
-                                                    {% endfor %}
+                                <div class="col-lg-12 mb-lg-auto">
+                                    <div class="rounded overflow-hidden transform-perspective-right">
+                                        <div id="carousel_example" class="carousel slide" data-ride="carousel"
+                                             tabindex="-1">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carousel_example" data-slide-to="0" class=""></li>
+                                                <li data-target="#carousel_example" data-slide-to="1" class=""></li>
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" style="width: 500px;height: 250px">
+                                                    <img class="img-fluid" width="500" height="250"
+                                                         src="{{ fiainana ? fiainana[0].avatar : './uploads/photos/3688833-5e0cd5eded8f6.jpeg' }}"
+                                                         alt="Hafatra hoanao">
                                                 </div>
-                                                <a class="carousel-control-prev" href="#carousel_example" role="button"
-                                                   data-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#carousel_example" role="button"
-                                                   data-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
+                                                {% for avatar in fiainana %}
+                                                    <div class="carousel-item" style="width: 500px;height: 250px">
+                                                        <img class="img-fluid" width="100%" height="100%"
+                                                             src="{{ avatar.avatar }}" alt="Hafatra hoanao">
+                                                    </div>
+                                                {% endfor %}
                                             </div>
+                                            <a class="carousel-control-prev" href="#carousel_example" role="button"
+                                               data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carousel_example" role="button"
+                                               data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-lg-12 mb-5 mb-lg-0">
+                                    <h1 class="text-dark font-weight-light">Teny manokana ho anao isan’andro</h1>
+                                    <p class="lead text-dark mt-4">Mizara hafatra hoanao isan'andro , tosika
+                                        fampaherezana
+                                        notsongaina avy ao amin'ny baiboly .</p>
+                                    <a href="{{ path('inscription_members') }}" class="btn btn-gradient-primary mt-4 ">Misorata
+                                        anarana</a>
                                 </div>
                             </div>
                         </div>
@@ -100,12 +103,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="https://www.facebook.com/fiainanabdb/" target="_blank" class="btn btn-block  btn-social-icon btn-social btn-facebook text-white">
+                                <a href="https://www.facebook.com/fiainanabdb/" target="_blank"
+                                   class="btn btn-block  btn-social-icon btn-social btn-facebook text-white">
                                     <span class="mdi mdi-facebook"></span>
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ path('home_page') }}" class="btn btn-block btn-social-icon btn-social btn-google text-white">
+                                <a href="{{ path('home_page') }}"
+                                   class="btn btn-block btn-social-icon btn-social btn-google text-white">
                                     <span class="mdi mdi-google"></span>
                                 </a>
                             </div>
