@@ -69,3 +69,13 @@ body {
 .card .card-title {
     text-transform: initial!important;
 }
+
+@media screen and (max-width: 480px){
+    .text-p{
+        display: none;
+    }
+
+    h1, .h1 {
+        font-size: 1.19rem;
+    }
+}
