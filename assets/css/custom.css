@@ -74,7 +74,9 @@ body {
     .text-p{
         display: none;
     }
-
+    .text-f{
+        display: none;
+    }
     h1, .h1 {
         font-size: 1.19rem;
     }
