@@ -84,4 +84,9 @@ body {
     .carousel-item{
         height: 100%!important;
     }
+
+    .fiainana-image-f{
+        width: 100% !important;
+        height: 150px!important;
+    }
 }
