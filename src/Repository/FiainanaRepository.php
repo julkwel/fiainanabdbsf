@@ -47,6 +47,7 @@ class FiainanaRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('t')
             ->andWhere('t.publicationDate < :val')
             ->andWhere('t.isPublie = :pub')
+            ->setParameter('pub',true)
             ->setParameter('val', new DateTime('now'))
             ->orderBy('t.id', 'DESC')
             ->setMaxResults(50)
