@@ -8,6 +8,8 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -28,6 +30,20 @@ class AbstractBaseController extends AbstractController
     {
         $this->manager = $manager;
         $this->encoder = $passwordEncoder;
+    }
+
+    /**
+     * @param $_data
+     *
+     * @return Response
+     */
+    public function response($_data)
+    {
+        $list = new Response($_data);
+        $list->headers->set('Content-Type', 'application/json');
+        $list->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $list;
     }
 
     /**

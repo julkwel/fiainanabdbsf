@@ -10,6 +10,7 @@ use App\Controller\AbstractBaseController;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +43,7 @@ class UserController extends AbstractBaseController
             return $this->render(
                 'user/_list_membres.html.twig',
                 [
-                    'users' => $user
+                    'users' => $user,
                 ]
             );
         }
@@ -50,7 +51,7 @@ class UserController extends AbstractBaseController
         return $this->render(
             'user/list_user.html.twig',
             [
-                'users' => $user
+                'users' => $user,
             ]
         );
     }
