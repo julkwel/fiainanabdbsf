@@ -73,7 +73,7 @@ class ApiController extends AbstractBaseController
         foreach ($tosika as $key => $value) {
             $tosikaList[$key]['id'] = $value->getId();
             $tosikaList[$key]['message'] = $value->getMessage();
-            $tosikaList[$key]['dateAdd'] = $value->getDateAdd()->format('d-m-Y');
+            $tosikaList[$key]['dateAdd'] = $value->getDateAdd() ? $value->getDateAdd()->format('d-m-Y') : (new \DateTime('now'))->format('d-m-Y');
         }
         $tosikaData = $serializer->serialize($tosikaList, 'json');
 

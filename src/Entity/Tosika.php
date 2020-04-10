@@ -29,6 +29,11 @@ class Tosika
      */
     private $message;
 
+    public function __construct()
+    {
+        $this->dateAdd = new \DateTime('now');
+    }
+
     public function getId(): ?int
     {
         return $this->id;
