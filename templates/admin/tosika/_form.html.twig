@@ -1,0 +1,18 @@
+{% extends 'admin/_base_admin.html.twig' %}
+{% set menu_tosika = true %}
+{% block body %}
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3 class="text-center">TOSIKA</h3>
+                </div>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="btn btn-gradient-primary mr-2" value="Enregistrer"/>
+                <a href="{{ path('liste_tosika') }}" class="btn btn-light">Cancel</a>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

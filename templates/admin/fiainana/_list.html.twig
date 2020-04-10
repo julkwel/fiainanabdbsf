@@ -1,5 +1,7 @@
 {% extends 'admin/_base_admin.html.twig' %}
 
+{% set menu_fiainana = true %}
+
 {% block body %}
     <div class="card">
         <div class="card-body">
@@ -8,32 +10,34 @@
                 <a href="{{ path('manage_fiainana') }}" class="btn btn-gradient-primary ml-auto">Nouveau</a>
             </div>
             <div class="mt-2"></div>
-            <table class="table table-bordered table-responsive">
-                <thead>
-                <tr>
-                    <th>Titre</th>
-                    <th>Déscription</th>
-                    <th>Date de publication</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for fiainana in fs %}
+            <div class="table-responsive">
+                <table class="table table-bordered w-100">
+                    <thead>
                     <tr>
-                        <td>{{ fiainana.title|replace({'zanaku': 'zanako'}) }}</td>
-                        <td>
-                            {% set text = fiainana.description|replace({'</p><p>': ' '})|striptags %}
-                            {{ text|length > 200 ? text|slice(0, 100) ~ '...'|raw : text|raw }}
-                        </td>
-                        <td>{{ fiainana.publicationDate|date('Y-m-d H:i') }}</td>
-                        <td>
-                            <a href="{{ path('manage_fiainana',{'id': fiainana.id}) }}" class="badge badge-success">Modifier</a>
-                            <a href="{{ path('remove_fiainana',{'id': fiainana.id}) }}" class="badge badge-danger">Supprimer</a>
-                        </td>
+                        <th>Titre</th>
+                        <th>Déscription</th>
+                        <th>Date de publication</th>
+                        <th>Action</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for fiainana in fs %}
+                        <tr>
+                            <td>{{ fiainana.title|replace({'zanaku': 'zanako'}) }}</td>
+                            <td>
+                                {% set text = fiainana.description|replace({'</p><p>': ' '})|striptags %}
+                                {{ text|length > 200 ? text|slice(0, 100) ~ '...'|raw : text|raw }}
+                            </td>
+                            <td>{{ fiainana.publicationDate|date('Y-m-d H:i') }}</td>
+                            <td>
+                                <a href="{{ path('manage_fiainana',{'id': fiainana.id}) }}" class="badge badge-success">Modifier</a>
+                                <a href="{{ path('remove_fiainana',{'id': fiainana.id}) }}" class="badge badge-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}

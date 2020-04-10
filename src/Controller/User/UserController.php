@@ -63,6 +63,7 @@ class UserController extends AbstractBaseController
      * @return Response
      *
      * @Route("/manage/{id?}", name="manage_user")
+     *
      * @Route("/members/{id?}",name="manage_members")
      */
     public function manage(Request $request, ?User $user)

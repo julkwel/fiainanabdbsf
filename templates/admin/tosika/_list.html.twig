@@ -1,0 +1,36 @@
+{% extends 'admin/_base_admin.html.twig' %}
+{% set menu_tosika = true %}
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title">Liste tosika</h4>
+                <a href="{{ path('manage_tosika') }}" class="btn btn-gradient-primary ml-auto">Nouveau</a>
+            </div>
+            <div class="mt-2"></div>
+            <div class="table-responsive">
+                <table class="table table-bordered w-100">
+                    <thead>
+                    <tr>
+                        <th>Message</th>
+                        <th>Date de publication</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for tosika in tosikas %}
+                        <tr>
+                            <td>{{ tosika.message }}</td>
+                            <td>{{ tosika.dateAdd|date('Y-m-d H:i') }}</td>
+                            <td>
+                                <a href="{{ path('remove_tosika',{'id': tosika.id}) }}"
+                                   class="badge badge-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

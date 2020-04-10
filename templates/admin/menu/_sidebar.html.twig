@@ -15,19 +15,25 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('dashboard') }}">
+            <a class="nav-link {% if menu_dashboard is defined %} active {% endif %}" href="{{ path('dashboard') }}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('list_user') }}">
+            <a class="nav-link {% if menu_user is defined %} active {% endif %}" href="{{ path('list_user') }}">
                 <span class="menu-title">Utilisateur</span>
                 <i class="mdi mdi-face menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('list_fiainana') }}">
+            <a class="nav-link {% if menu_tosika is defined %} active {% endif %}" href="{{ path('liste_tosika') }}">
+                <span class="menu-title">Tosika</span>
+                <i class="mdi mdi-view-list menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if menu_fiainana is defined %} active {% endif %}" href="{{ path('list_fiainana') }}">
                 <span class="menu-title">Publication</span>
                 <i class="mdi mdi-book-lock-open menu-icon"></i>
             </a>

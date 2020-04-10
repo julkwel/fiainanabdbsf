@@ -8,6 +8,7 @@ namespace App\Controller\Api;
 use App\Controller\AbstractBaseController;
 use App\Entity\User;
 use App\Repository\FiainanaRepository;
+use App\Repository\TosikaRepository;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,23 +35,49 @@ class ApiController extends AbstractBaseController
      */
     public function list(FiainanaRepository $tenyRepository): Response
     {
-        $_teny_list = $tenyRepository->findByDate();
+        $tenyData = $tenyRepository->findByDate();
         $encoders = [new XmlEncoder(), new JsonEncoder()];
         $normalizers = [new DateTimeNormalizer(), new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
 
-        $_teny_api = [];
-        foreach ($_teny_list as $key => $value) {
-            $_teny_api[$key]['id'] = $value->getId();
-            $_teny_api[$key]['description'] = preg_replace("/\s|&nbsp;/", ' ', strip_tags($value->getDescription()));
-            $_teny_api[$key]['title'] = $value->getTitle();
-            $_teny_api[$key]['image'] = $value->getAvatar();
-            $_teny_api[$key]['dateajout'] = date_format($value->getDateAdd(), 'd-m-Y');
-            $_teny_api[$key]['datepublication'] = date_format($value->getPublicationDate(), 'd-m-Y');
+        $tenyList = [];
+        foreach ($tenyData as $key => $value) {
+            $tenyList[$key]['id'] = $value->getId();
+            $tenyList[$key]['description'] = preg_replace("/\s|&nbsp;/", ' ', strip_tags($value->getDescription()));
+            $tenyList[$key]['title'] = $value->getTitle();
+            $tenyList[$key]['image'] = $value->getAvatar();
+            $tenyList[$key]['dateajout'] = date_format($value->getDateAdd(), 'd-m-Y');
+            $tenyList[$key]['datepublication'] = date_format($value->getPublicationDate(), 'd-m-Y');
         }
-        $_boo_user_list = $serializer->serialize($_teny_api, 'json');
+        $tenyList = $serializer->serialize($tenyList, 'json');
 
-        return $this->response($_boo_user_list);
+        return $this->response($tenyList);
+    }
+
+
+    /**
+     * @Route("/tosika/api/", name="tosika_api", methods={"GET"})
+     *
+     * @param TosikaRepository $tosikaRepository
+     *
+     * @return Response
+     */
+    public function listTosika(TosikaRepository $tosikaRepository): Response
+    {
+        $tosika = $tosikaRepository->findAll();
+        $encoders = [new XmlEncoder(), new JsonEncoder()];
+        $normalizers = [new DateTimeNormalizer(), new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $tosikaList = [];
+        foreach ($tosika as $key => $value) {
+            $tosikaList[$key]['id'] = $value->getId();
+            $tosikaList[$key]['message'] = $value->getMessage();
+            $tosikaList[$key]['dateAdd'] = $value->getDateAdd()->format('d-m-Y');
+        }
+        $tosikaData = $serializer->serialize($tosikaList, 'json');
+
+        return $this->response($tosikaData);
     }
 
     /**
