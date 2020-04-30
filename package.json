@@ -21,7 +21,7 @@
     "datatables.net-bs4": "^1.10.20",
     "datatables.net-buttons-bs4": "^1.6.1",
     "datatables.net-responsive-bs4": "^2.2.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jszip": "^3.2.2",
     "moment": "^2.24.0",
     "pdfmake": "^0.1.63",
