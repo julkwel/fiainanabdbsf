@@ -12,6 +12,7 @@ use App\Repository\FiainanaRepository;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,9 +30,9 @@ class DashboardController extends AbstractBaseController
     /**
      * DashboardController constructor.
      *
-     * @param \Doctrine\ORM\EntityManagerInterface                                      $manager
-     * @param \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface     $passwordEncoder
-     * @param \Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface $parameterBag
+     * @param EntityManagerInterface       $manager
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param ParameterBagInterface        $parameterBag
      */
     public function __construct(EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder, ParameterBagInterface $parameterBag)
     {
@@ -45,7 +46,7 @@ class DashboardController extends AbstractBaseController
      * @param FiainanaRepository $fiainanaRepository
      *
      * @return Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function dashboard(UserRepository $userRepository, FiainanaRepository $fiainanaRepository): Response
     {
