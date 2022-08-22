@@ -62,8 +62,8 @@ class FiainanaType extends AbstractType
                 FileType::class,
                 [
                     'label' => 'Photo',
-                    'data_class' => null,
                     'required' => false,
+                    'mapped' => false
                 ]
             );
     }

@@ -17,6 +17,7 @@ use Http\Client\Common\HttpMethodsClient as HttpClient;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
 use OneSignal\Config;
 use OneSignal\OneSignal;
+use PhpParser\Node\Scalar\MagicConst\File;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -86,21 +87,20 @@ class FiainanaController extends AbstractBaseController
     public function manage(Request $request, ?Fiainana $fiainana)
     {
         $fiainana = $fiainana ?: new Fiainana();
-        $photos = $fiainana->getAvatar();
-
         $form = $this->createForm(FiainanaType::class, $fiainana);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $photo = $form->get('avatar')->getData();
-            if ($photo) {
-                $fiainana->setAvatar($request->getSchemeAndHttpHost().'/uploads/photos/'.$this->upload($photo));
-            } elseif (null === $photo && $photos) {
-                $fiainana->setAvatar($photos);
+            if (!empty($photo)) {
+                $fileName = $this->upload($photo);
+                $fiainana->setAvatar($request->getSchemeAndHttpHost().'/uploads/photos/'.$fileName);
             }
-            if (null === $photo && null === $photos) {
+
+            if (empty($photo)) {
                 $fiainana->setAvatar(self::NULL_IMAGE);
             }
+
             try {
                 if (!$fiainana->getId()) {
                     $fiainana->setIsPublie(false);
@@ -114,7 +114,7 @@ class FiainanaController extends AbstractBaseController
             return $this->redirectToRoute('list_fiainana');
         }
 
-        return $this->render('admin/fiainana/_form.html.twig', ['form' => $form->createView()]);
+        return $this->render('admin/fiainana/_form.html.twig', ['form' => $form->createView(), 'fiainana' => $fiainana]);
     }
 
     /**

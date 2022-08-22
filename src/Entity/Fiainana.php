@@ -183,7 +183,7 @@ class Fiainana
     }
 
     /**
-     * @param string $avatar
+     * @param string|null $avatar
      *
      * @return Fiainana
      */

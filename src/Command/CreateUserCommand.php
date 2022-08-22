@@ -14,7 +14,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class CreateUserCommand.
@@ -35,18 +38,24 @@ class CreateUserCommand extends Command
      * @var DumpContactManager
      */
     private $dumpContactManager;
+    /**
+     * @var ParameterBagInterface
+     */
+    private $containerBag;
 
     /**
      * @param UserPasswordEncoderInterface $userPasswordEncoder
      * @param EntityManagerInterface       $entityManager
      * @param DumpContactManager           $dumpContactManager
+     * @param ParameterBagInterface        $containerBag
      */
-    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager, DumpContactManager $dumpContactManager)
+    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager, DumpContactManager $dumpContactManager, ParameterBagInterface $containerBag)
     {
         parent::__construct();
         $this->userPasswordEncoder = $userPasswordEncoder;
         $this->entityManager = $entityManager;
         $this->dumpContactManager = $dumpContactManager;
+        $this->containerBag = $containerBag;
     }
 
     /**
@@ -56,7 +65,8 @@ class CreateUserCommand extends Command
     {
         $this
             ->addOption('super-admin', null, InputOption::VALUE_NONE)
-            ->addOption('dump', null, InputOption::VALUE_NONE);
+            ->addOption('dump', null, InputOption::VALUE_NONE)
+            ->addOption('restore', null, InputOption::VALUE_NONE);
     }
 
     /**
@@ -92,6 +102,16 @@ class CreateUserCommand extends Command
             $this->dumpContactManager->getContact();
             $symfonyStyle->success("Dump all mail done");
             exit(0);
+        }
+
+        if ($input->getOption('restore')){
+            $path = $this->containerBag->get('kernel.project_dir').'/public/upload/contact.yaml';
+            $payload = Yaml::parse(file_get_contents($path));
+            foreach ($payload as $item){
+                $user = new User();
+                $user->setRoles(['ROLE_USER']);
+            }
+            dd($payload);
         }
 
         $symfonyStyle->warning("Command not found");
