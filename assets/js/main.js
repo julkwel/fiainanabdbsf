@@ -2,7 +2,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 $(document).ready(function () {
 
-    $('.datetime-picker').datetimepicker();
+    // $('.datetime-picker').datepicker({
+    //     "defaultDate":new Date()
+    // });
 
     $(document).on('change', '.custom-file-input', function (event) {
         $(this).next('.custom-file-label').html(event.target.files[0].name);

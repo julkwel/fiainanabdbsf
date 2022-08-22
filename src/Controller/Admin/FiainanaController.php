@@ -92,12 +92,14 @@ class FiainanaController extends AbstractBaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $photo = $form->get('avatar')->getData();
+            $date = $form->get('publicationDate')->getData();
+            $fiainana->setPublicationDate($date);
             if (!empty($photo)) {
                 $fileName = $this->upload($photo);
                 $fiainana->setAvatar($request->getSchemeAndHttpHost().'/uploads/photos/'.$fileName);
             }
 
-            if (empty($photo)) {
+            if (empty($photo) && !$fiainana->getAvatar()) {
                 $fiainana->setAvatar(self::NULL_IMAGE);
             }
 

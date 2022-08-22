@@ -20,7 +20,3 @@ require( 'datatables.net-bs4' );
 require('@ckeditor/ckeditor5-build-classic');
 require('./datetime');
 require('./main');
-
-
-
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

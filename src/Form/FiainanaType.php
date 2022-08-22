@@ -34,6 +34,7 @@ class FiainanaType extends AbstractType
                     'html5' => false,
                     'widget' => 'single_text',
                     'format' => 'MM/dd/yyyy HH:mm',
+                    'mapped' => false,
                     'attr' => [
                         'class' => 'datetime-picker datetimepicker-input',
                         'data-toggle' => 'datetimepicker',
