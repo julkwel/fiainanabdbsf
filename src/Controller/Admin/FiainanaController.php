@@ -86,14 +86,12 @@ class FiainanaController extends AbstractBaseController
      */
     public function manage(Request $request, ?Fiainana $fiainana)
     {
-        $fiainana = $fiainana ?: new Fiainana();
+        $fiainana = $fiainana ? : new Fiainana();
         $form = $this->createForm(FiainanaType::class, $fiainana);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $photo = $form->get('avatar')->getData();
-            $date = $form->get('publicationDate')->getData();
-            $fiainana->setPublicationDate($date);
             if (!empty($photo)) {
                 $fileName = $this->upload($photo);
                 $fiainana->setAvatar($request->getSchemeAndHttpHost().'/uploads/photos/'.$fileName);
@@ -110,7 +108,7 @@ class FiainanaController extends AbstractBaseController
                 }
                 $this->manager->flush();
             } catch (Exception $exception) {
-                dd($exception->getMessage());
+                $this->addFlash('error', 'Une erreur est survenu');
             }
 
             return $this->redirectToRoute('list_fiainana');

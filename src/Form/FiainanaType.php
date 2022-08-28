@@ -27,23 +27,6 @@ class FiainanaType extends AbstractType
     {
         $builder
             ->add(
-                'publicationDate',
-                DateTimeType::class,
-                [
-                    'label' => 'Date de publication',
-                    'html5' => false,
-                    'widget' => 'single_text',
-                    'format' => 'MM/dd/yyyy HH:mm',
-                    'mapped' => false,
-                    'attr' => [
-                        'class' => 'datetime-picker datetimepicker-input',
-                        'data-toggle' => 'datetimepicker',
-                        'data-target' => '#fiainana_publicationDate',
-                        'autocomplete'=>'off'
-                    ]
-                ]
-            )
-            ->add(
                 'title',
                 TextType::class,
                 [

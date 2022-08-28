@@ -7,6 +7,7 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 
 /**
  * Class Fiainana.
@@ -67,11 +68,12 @@ class Fiainana
     /**
      * Fiainana constructor.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct()
     {
         $this->dateAdd = new DateTime('now');
+        $this->publicationDate = new DateTime('now');
     }
 
     /**
