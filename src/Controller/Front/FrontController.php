@@ -121,7 +121,7 @@ class FrontController extends AbstractBaseController
         $fiainana = $this->manager->getRepository(Fiainana::class)->findBy(['isPublie' => true], ['id' => 'DESC'], 10);
         $filtres = $this->manager->getRepository(Filtre::class)->findAll();
 
-        return $this->render('front/_teny_details.html.twig', ['fn' => $fn,'fiainana'=>$fiainana,'filtres' => $filtres]);
+        return $this->render('front/_teny_details.html.twig', ['fn' => $fn, 'fiainana' => $fiainana, 'filtres' => $filtres]);
     }
 
     /**
@@ -140,5 +140,15 @@ class FrontController extends AbstractBaseController
         $this->manager->flush();
 
         return $this->redirectToRoute('home_page');
+    }
+
+    /**
+     * @Route("/blog/{id?}",name="blog")
+     */
+    public function blog()
+    {
+        $fiainana = $this->manager->getRepository(Fiainana::class)->findAll();
+
+        return $this->render('front/_blog.html.twig', ['fiainanas' => $fiainana]);
     }
 }
