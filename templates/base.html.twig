@@ -7,14 +7,23 @@
     <meta name="keyword" content="Fiainanabdb, Fiainana , bdb , teny , mana , baiboly, hafatra">
     <link rel="shortcut icon" href="{{ asset('upload/media/ic_launcher.png') }}">
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('front_page') }}
     {% endblock %}
 </head>
-<body>
-{% block menu %}{% include 'front/_menu.html.twig' %}{% endblock %}
-{% block body %}{% endblock %}
+<body class="page-index">
+{% include 'front/menu/header.html.twig' %}
+{% block hero %}
+    {% include 'front/menu/_hero.html.twig' %}
+{% endblock %}
+
+<main id="main">
+    {% block main %}{% endblock %}
+</main><!-- End #main -->
+{% include 'front/menu/_footer.html.twig' %}
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
 {% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('front_page') }}
 {% endblock %}
 </body>
 </html>
