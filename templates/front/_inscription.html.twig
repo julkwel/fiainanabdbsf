@@ -1,5 +1,18 @@
-{% extends 'front/_home_page.html.twig' %}
-{% block content %}
+{% extends 'base.html.twig' %}
+{% block hero %}{% endblock %}
+{% block main %}
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ asset('uploads/photos/fiainanabediabe.jpeg') }});">
+        <div class="container position-relative d-flex flex-column align-items-center">
+            <h2>INSCRIPTION</h2>
+            <ol>
+                <li><a href="{{ path('home_page') }}">Home</a></li>
+                <li>INSCRIPTION</li>
+            </ol>
+
+        </div>
+    </div><!-- End Breadcrumbs -->
+
     <div class="card mt-2">
         <div class="card-body">
             {{ form_start(form) }}
