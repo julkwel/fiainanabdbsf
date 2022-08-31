@@ -31,6 +31,10 @@
     height: fit-content;
 }
 
+.swiper-slide{
+    text-align: center;
+}
+
 .header.sticked {
     background: rgb(219 90 90);
     padding: 12px 0;
