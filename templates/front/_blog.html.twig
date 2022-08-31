@@ -40,10 +40,12 @@
                                         <ul>
                                             <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
                                                         href="#">John Doe</a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                                        href="#">
+                                            <li class="d-flex align-items-center">
+                                                <i class="bi bi-clock"></i>
+                                                <a href="#">
                                                     <time datetime="2022-01-01">Jan 1, 2022</time>
-                                                </a></li>
+                                                </a>
+                                            </li>
                                             <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
                                                         href="#">12 Comments</a></li>
                                         </ul>
@@ -51,9 +53,9 @@
 
                                     <div class="content">
                                         <p>
-                                            Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit
-                                            autem dolorem labore omnis et. Eum temporibus fugiat voluptate enim tenetur
-                                            sunt omnis.
+                                            {% set description = blog.description|replace({'</p><p>': ' '})|striptags %}
+                                            {{ description|length > 200 ? description|slice(0, 200) ~ '...'|raw : description|raw }}
+                                            {{ description|raw }}
                                         </p>
                                     </div>
 
