@@ -13,7 +13,7 @@
         position: absolute;
         content: "";
         width: 40%;
-        /*background: #db5a5a;*/
+        background: #db5a5a;
         top: 0;
         bottom: 0;
     }
@@ -28,7 +28,7 @@
 
 .hero-slider{
     width: 100%;
-    height: fit-content;
+    height: 500px;
 }
 
 .swiper-slide{
@@ -36,6 +36,6 @@
 }
 
 .header.sticked {
-    /*background: rgb(219 90 90);*/
+    background: rgb(219 90 90);
     padding: 12px 0;
 }
