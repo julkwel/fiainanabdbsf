@@ -46,42 +46,41 @@ class FiainanaController extends AbstractBaseController
     public function listFiainana(Request $request, MessageBusInterface $messageBus)
     {
         $fiainana = $this->manager->getRepository(Fiainana::class)->findAll();
-        $dateNow = new DateTime('now');
+//        $dateNow = new DateTime('now');
 
-        /** @var Fiainana $message */
-        foreach ($fiainana as $message) {
-            if ($dateNow > $message->getPublicationDate() && false === $message->isPublie()) {
-                $message->setIsPublie(true);
-                $this->manager->flush();
-
-                try {
-                    $this->getOneSignal()->notifications->add([
-                        'contents' => [
-                            'en' => str_replace('zanaku', 'zanako', $message->getTitle()),
-                        ],
-                        'included_segments' => ['All'],
-                        'send_after' => $message->getPublicationDate(),
-                        'data' => ['fitiavana' => 'fiainana be dia be'],
-                        "url" => $request->getSchemeAndHttpHost().$this->generateUrl('message_details', ['id' => $message->getId()]),
-                    ]);
-                } catch (Exception $exception) {
-//                    dd($exception);
-                }
-
-                $messageBus->dispatch(new FiainanaNotification(['fiainana' => $message]));
-            }
-        }
+//        /** @var Fiainana $message */
+//        foreach ($fiainana as $message) {
+//            if ($dateNow > $message->getPublicationDate() && false === $message->isPublie()) {
+//                $message->setIsPublie(true);
+//                $this->manager->flush();
+//
+//                try {
+//                    $this->getOneSignal()->notifications->add([
+//                        'contents' => [
+//                            'en' => str_replace('zanaku', 'zanako', $message->getTitle()),
+//                        ],
+//                        'included_segments' => ['All'],
+//                        'send_after' => $message->getPublicationDate(),
+//                        'data' => ['fitiavana' => 'fiainana be dia be'],
+//                        "url" => $request->getSchemeAndHttpHost().$this->generateUrl('message_details', ['id' => $message->getId()]),
+//                    ]);
+//                } catch (Exception $exception) {
+////                    dd($exception);
+//                }
+//
+//                $messageBus->dispatch(new FiainanaNotification(['fiainana' => $message]));
+//            }
+//        }
 
         return $this->render('admin/fiainana/_list.html.twig', ['fs' => $fiainana]);
     }
 
     /**
-     * @param Request  $request
-     * @param Fiainana $fiainana
+     * @param Request       $request
+     * @param Fiainana|null $fiainana
      *
      * @return Response
      *
-     * @throws Exception
      * @Route("/manage/{id?}",name="manage_fiainana")
      */
     public function manage(Request $request, ?Fiainana $fiainana)
@@ -126,11 +125,8 @@ class FiainanaController extends AbstractBaseController
      */
     public function remove(Fiainana $fiainana)
     {
-        if ($fiainana) {
-            $this->manager->remove($fiainana);
-
-            $this->manager->flush();
-        }
+        $this->manager->remove($fiainana);
+        $this->manager->flush();
 
         return $this->redirectToRoute('list_fiainana');
     }
