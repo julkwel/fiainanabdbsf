@@ -1,13 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_security.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
-{% block hero %} {% endblock %}
-{% block main %}
+{% block body %}
 <div class="container-scroller">
     <div class="col-md-4 mx-auto">
         <div class="auth-form-light text-left p-5">
-            <div class="brand-logo">
-                <img src="{{ asset('upload/media/download.jpeg') }}">
+            <div class="brand-logo text-center">
+                <img class="rounded-circle" src="{{ asset('upload/media/download.jpeg') }}">
             </div>
             <form method="post" class="pt-3">
                 {% if error %}
@@ -20,7 +19,7 @@
                     </div>
                 {% endif %}
 
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 font-weight-normal text-center">Se connecter</h1>
                 <div class="form-group">
                     <label for="inputUsername">Username</label>
                     <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>

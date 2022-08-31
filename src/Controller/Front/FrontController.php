@@ -118,10 +118,10 @@ class FrontController extends AbstractBaseController
      */
     public function details(Fiainana $fn)
     {
-        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy(['isPublie' => true], ['id' => 'DESC'], 10);
-        $filtres = $this->manager->getRepository(Filtre::class)->findAll();
+        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy([], ['id' => 'DESC'], 10);
+//        $filtres = $this->manager->getRepository(Filtre::class)->findAll();
 
-        return $this->render('front/blog_details.html.twig', ['fn' => $fn, 'fiainana' => $fiainana, 'filtres' => $filtres]);
+        return $this->render('front/blog_details.html.twig', ['fn' => $fn, 'fiainanas' => $fiainana]);
     }
 
     /**
@@ -147,7 +147,7 @@ class FrontController extends AbstractBaseController
      */
     public function blog()
     {
-        $fiainana = $this->manager->getRepository(Fiainana::class)->findAll();
+        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy([], [], 10);
 
         return $this->render('front/_blog.html.twig', ['fiainanas' => $fiainana]);
     }

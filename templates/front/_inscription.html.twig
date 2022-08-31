@@ -1,28 +1,20 @@
-{% extends 'base.html.twig' %}
-{% block hero %}{% endblock %}
-{% block main %}
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ asset('uploads/photos/fiainanabediabe.jpeg') }});">
-        <div class="container position-relative d-flex flex-column align-items-center">
-            <h2>INSCRIPTION</h2>
-            <ol>
-                <li><a href="{{ path('home_page') }}">Home</a></li>
-                <li>INSCRIPTION</li>
-            </ol>
-
-        </div>
-    </div><!-- End Breadcrumbs -->
-
-    <div class="card mt-2">
-        <div class="card-body">
-            {{ form_start(form) }}
+{% extends 'base_security.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="card mt-2">
+            <div class="card-header text-center">
+                <h1>INSCRIPTION</h1>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
                 {{ form_row(form.nom) }}
                 {{ form_row(form.prenom) }}
                 {{ form_row(form.username) }}
                 {{ form_row(form.birthDate) }}
-            {% do form.password.setRendered %}
-            <input type="submit" class="btn btn-gradient-primary" value="S'enregistrer">
-            {{ form_end(form) }}
+                {% do form.password.setRendered %}
+                <input type="submit" class="btn btn-gradient-primary" value="S'enregistrer">
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 {% endblock %}
