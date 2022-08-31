@@ -21,7 +21,6 @@
                             <p>
                                 {% set description = fn.description|replace({'</p><p>': ' '})|striptags %}
                                 {{ description|length > 200 ? description|slice(0, 100) ~ '...'|raw : description|raw }}
-                                {{ description|raw }}
                             </p>
                             <a href="{{ path('message_details', {'id': fn.id}) }}" class="readmore stretched-link"><span>Lire la suite</span><i
                                         class="bi bi-arrow-right"></i></a>

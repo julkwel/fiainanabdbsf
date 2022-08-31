@@ -55,7 +55,6 @@
                                         <p>
                                             {% set description = blog.description|replace({'</p><p>': ' '})|striptags %}
                                             {{ description|length > 200 ? description|slice(0, 200) ~ '...'|raw : description|raw }}
-                                            {{ description|raw }}
                                         </p>
                                     </div>
 
