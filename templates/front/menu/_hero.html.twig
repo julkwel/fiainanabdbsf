@@ -16,30 +16,13 @@
 {#                <div class="col-xl-7 slides  position-relative">#}
                     <div class="slides-1 swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="item">
-                                    <img src="{{ asset('uploads/photos/191108 fbdb.jpg') }}" class="hero-slider" alt="">
-                                </div>
-                            </div><!-- End slide item -->
-
-                            <div class="swiper-slide">
-                                <div class="item">
-                                    <img src="{{ asset('uploads/photos/200501 fbdb.jpg') }}" class="hero-slider" alt="">
-                                </div>
-                            </div><!-- End slide item -->
-
-                            <div class="swiper-slide">
-                                <div class="item">
-                                    <img src="{{ asset('uploads/photos/200430 fbdb.jpg') }}" class="hero-slider" alt="">
-                                </div>
-                            </div><!-- End slide item -->
-
-                            <div class="swiper-slide">
-                                <div class="item">
-                                    <img src="{{ asset('uploads/photos/200118 fbdb.jpg') }}" class="hero-slider" alt="">
-                                </div>
-                            </div><!-- End slide item -->
-
+                            {% for slide in  get_slides()  %}
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <img src="{{ asset('uploads/slides/'~slide) }}" class="hero-slider" alt="">
+                                    </div>
+                                </div><!-- End slide item -->
+                            {% endfor %}
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>

@@ -12,7 +12,10 @@
                 {{ form_row(form.username) }}
                 {{ form_row(form.birthDate) }}
                 {% do form.password.setRendered %}
-                <input type="submit" class="btn btn-gradient-primary" value="S'enregistrer">
+                <div class="form-group text-center">
+                    <a href="{{ path('home_page') }}" class="btn btn-danger">Annuler</a>
+                    <input type="submit" class="btn btn-gradient-primary" value="S'enregistrer">
+                </div>
                 {{ form_end(form) }}
             </div>
         </div>
