@@ -1,34 +1,41 @@
-<section id="hero" style="background-image: url('{{ asset('uploads/photos/fiainanabediabe.jpeg') }}')" class="hero d-flex align-items-center">
+<section id="hero" style="background-image: url('{{ asset('uploads/photos/fiainanabediabe.jpeg') }}')"
+         class="hero d-flex align-items-center">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-xl-1" style="z-index: 99999"></div>
             <div class="col-xl-4 m-2" style="z-index: 99999">
                 <h2 data-aos="fade-up">Teny manokana ho anao isan’andro</h2>
                 <blockquote data-aos="fade-up" data-aos-delay="100">
-                    <p>Mizara hafatra hoanao isan'andro , tosika fampaherezana notsongaina avy ao amin'ny baiboly</p>
+                    <p>Tena fifaliako amin’ny maha Rainao Ahy ny mijery anao mianoka ao anaty fifaliana, fiadanana.
+                        Ezahan’ny fahavalo rombahana eny aminao io fiainana be dia be omeko anao io. Tena faniriako ny
+                        hananantsika fifamatoram-piainana mitombo isanandro anaka, rehefa mitoetra eo amin’ny
+                        fanatrehako ianao, rehefa ankamamianao ny teniko, rehefa zary fiainanao ny fankatoavana Ahy dia
+                        ho tafatoetra ny fonao, hianoka fifaliana sy fiadanana ianao ary tsy hisy hahatombaka anao
+                        amin’ny tanako anaka. Tsarovy fa fitiavana mandrakizay no nitiavako anao, lafo vidy ianao eo
+                        anatrehako, sarobidy Amiko ny fisianao, tena tiako ianao anaka, raiso, henoy, vakio, hiaino ny
+                        hafatra arosoko ho anao isanandro.</p>
                 </blockquote>
                 <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
                     <a href="{{ path('inscription_members') }}" class="btn-get-started">s'inscrire</a>
                 </div>
             </div>
-            <div class="col-xl-1"></div>
+            <div class="col-xl-2"></div>
             <div class="col-xl-5  slides  position-relative">
-{#                <div class="col-xl-7 slides  position-relative">#}
-                    <div class="slides-1 swiper">
-                        <div class="swiper-wrapper">
-                            {% for slide in  get_slides()  %}
-                                <div class="swiper-slide">
-                                    <div class="item">
-                                        <img src="{{ asset('uploads/slides/'~slide) }}" class="hero-slider" alt="">
-                                    </div>
-                                </div><!-- End slide item -->
-                            {% endfor %}
-                        </div>
-                        <div class="swiper-pagination"></div>
+                {# <div class="col-xl-7 slides  position-relative"> #}
+                <div class="slides-1 swiper">
+                    <div class="swiper-wrapper">
+                        {% for slide in  get_slides() %}
+                            <div class="swiper-slide">
+                                <div class="item">
+                                    <img src="{{ asset('uploads/slides/'~slide) }}" class="hero-slider" alt="">
+                                </div>
+                            </div><!-- End slide item -->
+                        {% endfor %}
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-{#                </div>#}
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                {# </div> #}
             </div>
         </div>
     </div>
