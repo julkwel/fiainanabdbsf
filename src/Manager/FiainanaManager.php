@@ -78,9 +78,9 @@ class FiainanaManager
 
     /**
      * @param SymfonyStyle $symfonyStyle
-     * @param array        $sendTo
+     * @param string        $sendTo
      */
-    public function sendTo(SymfonyStyle $symfonyStyle, array $sendTo)
+    public function sendTo(SymfonyStyle $symfonyStyle, string $sendTo)
     {
         $transport = $this->mailer->getTransport();
         if (!$transport->ping()) {
