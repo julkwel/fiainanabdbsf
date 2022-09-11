@@ -108,7 +108,7 @@ class FiainanaManager
         try {
             $messages = $this->fiainanaRepository->findBy(['isSended' => null]);
             $symfonyStyle->note(sprintf("%s messages found", count($messages)));
-            
+
             foreach ($messages as $message) {
                 $desc = preg_replace("/\s|&nbsp;/", ' ', strip_tags($message->getDescription()));
                 $template = $this->environment->render(
