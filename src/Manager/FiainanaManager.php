@@ -78,7 +78,7 @@ class FiainanaManager
 
     /**
      * @param SymfonyStyle $symfonyStyle
-     * @param string        $sendTo
+     * @param string       $sendTo
      */
     public function sendTo(SymfonyStyle $symfonyStyle, string $sendTo)
     {
@@ -94,6 +94,7 @@ class FiainanaManager
             exit(0);
         }
 
+        $symfonyStyle->note("User content loading ...");
         $this->generateContent($symfonyStyle, $member);
     }
 
@@ -106,6 +107,8 @@ class FiainanaManager
     {
         try {
             $messages = $this->fiainanaRepository->findBy(['isSended' => null]);
+            $symfonyStyle->note(sprintf("%s messages found", count($messages)));
+            
             foreach ($messages as $message) {
                 $desc = preg_replace("/\s|&nbsp;/", ' ', strip_tags($message->getDescription()));
                 $template = $this->environment->render(
@@ -125,6 +128,8 @@ class FiainanaManager
                         ->setTo($member->getUsername())
                         ->setBody($template, 'text/html');
                     $this->mailer->send($swiftmessage);
+
+                    $symfonyStyle->success("Mail sended !!!");
                 }
 
                 if ($toView) {
