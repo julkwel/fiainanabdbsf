@@ -66,6 +66,13 @@ class Fiainana
     private $isPublie;
 
     /**
+     * @var boolean|null
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isSended;
+
+    /**
      * Fiainana constructor.
      *
      * @throws Exception
@@ -212,6 +219,26 @@ class Fiainana
     public function setIsPublie(?bool $isPublie): self
     {
         $this->isPublie = $isPublie;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsSended(): ?bool
+    {
+        return $this->isSended;
+    }
+
+    /**
+     * @param bool|null $isSended
+     *
+     * @return Fiainana
+     */
+    public function setIsSended(?bool $isSended): Fiainana
+    {
+        $this->isSended = $isSended;
 
         return $this;
     }

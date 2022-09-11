@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     publication_photo: '%kernel.project_dir%/public/uploads/photos'
+    bible_cleaned_csv: '%kernel.project_dir%/public/import/fia__bible_verse.cleaned.csv'
     email_fiainana: 'fiainanabediabe@gmail.com'
     pass_fiainana: 'fi@in@n@'
 services:

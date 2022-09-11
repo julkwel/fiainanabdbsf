@@ -37,7 +37,7 @@ class DirScannerExtension extends AbstractExtension
      */
     public function getSlideFiles()
     {
-        $dirs = scandir($this->parameterBag->get('kernel.root_dir').'/../public/uploads/slides/');
+        $dirs = scandir($this->parameterBag->get('kernel.project_dir').'/public/uploads/slides/');
 
         return array_filter($dirs, function ($item) {
             return strpos($item, 'jpg') !== false;
