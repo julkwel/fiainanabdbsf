@@ -11,13 +11,14 @@
                 {% for fn in fiainana|default([]) %}
                     <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="post-box">
-                            <div class="post-img"><img src="{{ fn.avatar|default('./uploads/photos/fiainana.jpeg') }}"
-                                                       class="img-fluid" alt=""></div>
+                            <div class="post-img">
+                                <img src="{{ fn.avatar|default('./uploads/photos/fiainana.jpeg') }}" class="img-fluid" alt="">
+                            </div>
                             <div class="meta">
                                 <span class="post-date">{{ fn.dateAdd|date('d-m-Y') }}</span>
                                 <span class="post-author"> / Fiainana be dia be</span>
                             </div>
-                            <h3 class="post-title">Teny manokana ho anao isan’andro</h3>
+                            <h3 class="post-title">{{ fn.title }}</h3>
                             <p>
                                 {% set description = fn.description|replace({'</p><p>': ' '})|striptags %}
                                 {{ description|length > 200 ? description|slice(0, 100) ~ '...'|raw : description|raw }}

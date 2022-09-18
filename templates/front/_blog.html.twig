@@ -28,29 +28,27 @@
                             <div class="col-lg-6">
                                 <article class="d-flex flex-column">
                                     <div class="post-img">
-                                        <img src="{{ asset('uploads/photos/fiainana.jpeg') }}" alt="" class="img-fluid">
+                                        <img src="{{ fn.avatar|default('./uploads/photos/fiainana.jpeg') }}" alt="" class="img-fluid">
                                     </div>
 
                                     <h2 class="title">
-                                        <a href="#">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero
-                                            sit sint.</a>
+                                        <a href="#">{{ fn.title }}.</a>
                                     </h2>
 
                                     <div class="meta-top">
                                         <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                                        href="#">John Doe</a></li>
+                                            <li class="d-flex align-items-center">
+                                                <i class="bi bi-person"></i>
+                                                <a href="#">Fiainana be dia be</a>
+                                            </li>
                                             <li class="d-flex align-items-center">
                                                 <i class="bi bi-clock"></i>
                                                 <a href="#">
-                                                    <time datetime="2022-01-01">Jan 1, 2022</time>
+                                                    <time datetime="2022-01-01">{{ fn.dateAdd|date('d-m-Y') }}</time>
                                                 </a>
                                             </li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                        href="#">12 Comments</a></li>
                                         </ul>
                                     </div>
-
                                     <div class="content">
                                         <p>
                                             {% set description = blog.description|replace({'</p><p>': ' '})|striptags %}
