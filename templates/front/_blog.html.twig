@@ -32,7 +32,7 @@
                                     </div>
 
                                     <h2 class="title">
-                                        <a href="#">{{ fn.title }}.</a>
+                                        <a href="#">{{ fn.title|replace({'zanaku': 'zanako'}) }}.</a>
                                     </h2>
 
                                     <div class="meta-top">
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="content">
                                         <p>
-                                            {% set description = blog.description|replace({'</p><p>': ' '})|striptags %}
+                                            {% set description = blog.description|replace({'zanaku': 'zanako'})|replace({'</p><p>': ' '})|striptags %}
                                             {{ description|length > 200 ? description|slice(0, 200) ~ '...'|raw : description|raw }}
                                         </p>
                                     </div>

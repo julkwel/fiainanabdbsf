@@ -31,7 +31,7 @@
                                 <img src="{{ fn.avatar|default('./uploads/photos/fiainana.jpeg') }}" alt="" class="img-fluid">
                             </div>
 
-                            <h2 class="title">{{ fn.title }}</h2>
+                            <h2 class="title">{{ fn.title|replace({'zanaku': 'zanako'}) }}</h2>
 
                             <div class="meta-top">
                                 <ul>

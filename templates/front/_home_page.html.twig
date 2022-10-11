@@ -18,9 +18,9 @@
                                 <span class="post-date">{{ fn.dateAdd|date('d-m-Y') }}</span>
                                 <span class="post-author"> / Fiainana be dia be</span>
                             </div>
-                            <h3 class="post-title">{{ fn.title }}</h3>
+                            <h3 class="post-title">{{ fn.title|replace({'zanaku': 'zanako'}) }}</h3>
                             <p>
-                                {% set description = fn.description|replace({'</p><p>': ' '})|striptags %}
+                                {% set description = fn.description|replace({'zanaku': 'zanako'})|replace({'</p><p>': ' '})|striptags %}
                                 {{ description|length > 200 ? description|slice(0, 100) ~ '...'|raw : description|raw }}
                             </p>
                             <a href="{{ path('message_details', {'id': fn.id}) }}"
