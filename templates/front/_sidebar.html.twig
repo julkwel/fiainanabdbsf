@@ -30,12 +30,12 @@
                                 <h4>
                                     <a href="{{ path('message_details', {'id': blog_recent.id}) }}">
                                         <p>
-                                            {% set description = blog_recent.description|replace({'</p><p>': ' '})|striptags %}
+                                            {% set description = blog_recent.description|replace({'zanaku': 'zanako'})|replace({'</p><p>': ' '})|striptags %}
                                             {{ description|length > 50 ? description|slice(0, 50) ~ '...'|raw : description|raw }}
                                         </p>
                                     </a>
                                 </h4>
-                                <time datetime="2020-01-01">Jan 1, 2020</time>
+                                <time datetime="2020-01-01">{{ blog_recent.dateAdd|date('d-m-Y') }}</time>
                             </div>
                         </div><!-- End recent post item-->
                     {% endfor %}
