@@ -36,7 +36,7 @@ class FrontController extends AbstractBaseController
     public function home()
     {
         $filtres = $this->manager->getRepository(Filtre::class)->findAll();
-        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy(['isPublie' => true], ['id' => 'DESC'], 10);
+        $fiainana = $this->manager->getRepository(Fiainana::class)->findBy([], ['id' => 'DESC'], 10);
 
         return $this->render('front/_home_page.html.twig', ['fiainana' => $fiainana, 'filtres' => $filtres,]);
     }
